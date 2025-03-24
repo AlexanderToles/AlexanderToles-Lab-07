@@ -2,86 +2,22 @@
 void printCombinations(int td,int fg,int s,int td2,int td1){
     printf("%d TD + 2pt, %d TD + FG, %d TD, %d FG %d Safety\n", td2, td1, td, fg, s);
 }
-void compareScores(int i, int score, int s,int fg, int td, int td1, int td2){
-    int testScore[] = {2,3,6,7,8};
-    if(score >= score-testScore[i]){
-        if(score-testScore[i]<0){
-            compareScores(0,score,s,fg,td,td1,td2);
-        }
-        else{
-            switch(score-testScore[i]){
-                case 0:
-                switch(testScore[i]){
-                    case 2:
-                        s++;
-                        //printf("s: %d\n",s);
-                        break;
-                    case 3:
-                        fg++;
-                        //printf("fg: %d\n",fg);
-                        break;
-                    case 6:
-                        td++;
-                        //printf("td: %d\n",td);
-                        break;
-                    case 7:
-                        td1++;
-                        //printf("td1: %d\n",td1);
-                        break;
-                    case 8:
-                        td2++;
-                        //printf("td2: %d\n",td2);
-                        break;
-                }
-                    //printf("Score: %d, testScore: %d\n, score-testScore[i]: %d\n", score,testScore[i], score-testScore[i]);
-                    printCombinations(td,fg,s,td2,td1);
-                    break;
-                case 1:
-                    //printf("Score: %d, testScore: %d\n, score-testScore[i]: %d\n", score,testScore[i], score-testScore[i]);
-                    i++;
-                    compareScores(i,score,s,fg,td,td1,td2);
-                    break;
-                default:
-                switch(testScore[i]){
-                    case 2:
-                        s++;
-                        //printf("s: %d\n",s);
-                        break;
-                    case 3:
-                        fg++;
-                        //printf("fg: %d\n",fg);
-                        break;
-                    case 6:
-                        td++;
-                        //printf("td: %d\n",td);
-                        break;
-                    case 7:
-                        td1++;
-                        //printf("td1: %d\n",td1);
-                        break;
-                    case 8:
-                        td2++;
-                        //printf("td2: %d\n",td2);
-                        break;
-                }
-                    //printf("Score: %d, testScore: %d\n, score-testScore[i]: %d\n", score,testScore[i], score-testScore[i]);
-                    score = score-testScore[i];
-                    compareScores(i,score,s,fg,td,td1,td2);
-                    break;
-            }
-        }
-        }
-        
-    
-}
 void searchCombinations(int score){
     int td,fg,s,td2,td1;
     td = fg = s =td2 = td1 = 0;
     int testScore[] = {2,3,6,7,8};
     
-    for(int i = 0;i<5;i++){
-        if(score >= testScore[i]){
-            compareScores(i,score,s,fg,td,td1,td2);
+    for(int s_num = 0;s_num<5;s_num++){
+        for(int fg_num = 0;fg_num<5;fg_num++){
+            for(int td_num = 0;td_num<5;td_num++){
+                for(int td1_num = 0;td1_num<5;td1_num++){
+                    for(int td2_num = 0;td2_num<5;td2_num++){
+                        if((s_num*2)+(fg_num*3)+(td_num*6)+(td1_num*7)+(td2_num*8)==score){
+                            printCombinations(td_num,fg_num,s_num,td2_num,td1_num);
+                        }
+                    }
+                }
+            }
         }
     }
     
