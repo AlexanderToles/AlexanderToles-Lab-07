@@ -30,18 +30,20 @@ void searchCombinations(int score){
     
 
 }
-int promptUser(){
+void promptUser(){
     int score;
     printf("\nEnter Score(Enter 0 or 1 to exit): ");
     scanf("%d", &score);
     if(score > 1){
         printf("Possible score combinations to make %d\n",score);
         searchCombinations(score);
+        promptUser();
     }
     else{
         return;
     }
 }
 int main(){
+    promptUser();
     return 0;
 }
