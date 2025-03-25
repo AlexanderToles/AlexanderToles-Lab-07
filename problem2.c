@@ -22,18 +22,54 @@ float kelvin_to_celsius(float kelvin){
 }
 
 void categorizeTemp(float tempVal,int convTarget){
+    int celsius;
+    char tempLabel;
     switch(convTarget){
+        case 1:
+            celsius = tempVal;
+            tempLabel = 'C';
+            break;
         case 2:
-            tempVal = fahrenheit_to_celsius(tempVal);
+            celsius = fahrenheit_to_celsius(tempVal);
+            tempLabel = 'F';
             break;
         case 3:
-            tempVal = kelvin_to_celsius(tempVal);
+            celsius = kelvin_to_celsius(tempVal);
+            tempLabel = 'K';
             break;
     }
+    if(celsius < 0){
+        printf("Converted Temperature: %f%c\n",tempVal,tempLabel);
+        printf("Temperature Category: Freezing\n");
+        printf("Weather Advisory: Stay indoors, wear winter clothing.\n");
+    }
+    if(celsius >= 0 && tempVal < 10){
+        printf("Converted Temperature: %f%c\n",tempVal,tempLabel);
+        printf("Temperature Category: Cold\n ");
+        printf("Weather Advisory: Wear warm clothing. \n");
 
+    }
+    if(celsius >= 10 && tempVal < 25){
+        printf("Converted Temperature: %f%c\n",tempVal,tempLabel);
+        printf("Temperature Category: Comfortable\n");
+        printf("Weather Advisory: You should feel comfortable.\n");
+
+    }
+    if(celsius >= 25 &&  tempVal < 35){
+        printf("Converted Temperature: %f%c\n",tempVal,tempLabel);
+        printf("Temperature Category: Hot\n");
+        printf("Weather Advisory: Dress lightly, drink more water.\n ");
+
+    }
+    if(celsius >= 35){
+        printf("Converted Temperature: %f%c\n",tempVal,tempLabel);
+        printf("Temperature Category: Extreme heat\n");
+        printf("Weather Advisory: Stay indoors, dress lightly\n");
+
+    }
 }
 
-void convertTemp(float tempVal, int tempScale, int convTarget){
+float convertTemp(float tempVal, int tempScale, int convTarget){
     float convertedTemp;
     switch(tempScale){
         case 1:
@@ -69,7 +105,7 @@ void convertTemp(float tempVal, int tempScale, int convTarget){
             }
             break;
     }
-    printf("converted temp: %f\n",convertedTemp);
+    return convertedTemp;
 }
 
 int validateSelect(float tempVal, int tempScale, int convTarget){
@@ -108,7 +144,7 @@ void printMenu(){
         printMenu();
     }
     else{
-        convertTemp(tempVal,tempScale,convTarget);
+        categorizeTemp(convertTemp(tempVal,tempScale,convTarget),convTarget);
     }
 }
 
