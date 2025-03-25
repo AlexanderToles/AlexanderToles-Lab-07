@@ -5,8 +5,6 @@ void printCombinations(int td,int fg,int s,int td2,int td1){
 void searchCombinations(int score){
     int td,fg,s,td2,td1;
     td = fg = s =td2 = td1 = 0;
-    int testScore[] = {2,3,6,7,8};
-    
     for(int s_num = 0;s_num*2<score;s_num++){
 
         for(int fg_num = 0;fg_num*3<score;fg_num++){
@@ -32,10 +30,18 @@ void searchCombinations(int score){
     
 
 }
-int main(){
+int promptUser(){
     int score;
-    printf("Enter Score: ");
+    printf("\nEnter Score(Enter 0 or 1 to exit): ");
     scanf("%d", &score);
-    searchCombinations(score);
+    if(score > 1){
+        printf("Possible score combinations to make %d\n",score);
+        searchCombinations(score);
+    }
+    else{
+        return;
+    }
+}
+int main(){
     return 0;
 }
