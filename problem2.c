@@ -1,7 +1,5 @@
 #include <stdio.h>
 
-
-
 int validateSelect(int tempScale, int convTarget){
     int retryVal = 0;
     if(tempScale > 3 || tempScale < 1){
@@ -10,6 +8,10 @@ int validateSelect(int tempScale, int convTarget){
     }
     if(convTarget > 3 || convTarget < 1){
         printf("Invalid selection for conversion target. (Value must be between 1-3)\n");
+        retryVal = 1;
+    }
+    if(retryVal == 0 && convTarget == tempScale){
+        printf("Invalid selection for conversion target. (Conversion target can not match chosen scale)\n");
         retryVal = 1;
     }
     return retryVal;
