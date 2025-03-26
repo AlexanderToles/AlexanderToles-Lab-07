@@ -47,7 +47,14 @@ void promptUser(){
         promptUser(); //prompt the user again.
     }
     else{
-        return; //end program
+        if(score < 0){
+            printf("Score can not be negative"); //if score is negative,
+            promptUser();
+        }
+        else{
+            return; //end program
+        }
+        
     }
 }
 int main(){
