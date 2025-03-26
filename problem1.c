@@ -3,8 +3,6 @@ void printCombinations(int td,int fg,int s,int td2,int td1){
     printf("%d TD + 2pt, %d TD + FG, %d TD, %d FG %d Safety\n", td2, td1, td, fg, s);
 }
 void searchCombinations(int score){
-    int td,fg,s,td2,td1;
-    td = fg = s =td2 = td1 = 0;
     for(int s_num = 0;s_num*2<score;s_num++){
 
         for(int fg_num = 0;fg_num*3<score;fg_num++){
