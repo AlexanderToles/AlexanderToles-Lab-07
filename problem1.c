@@ -7,9 +7,6 @@
 
 #include <stdio.h>
 
-void printCombinations(int td,int fg,int s,int td2,int td1){
-    printf("%d TD + 2pt, %d TD + FG, %d TD, %d FG %d Safety\n", td2, td1, td, fg, s);
-}
 void searchCombinations(int score){
     for(int s_num = 0;s_num*2<score;s_num++){
 
@@ -23,7 +20,7 @@ void searchCombinations(int score){
 
                         if((s_num*2)+(fg_num*3)+(td_num*6)+(td1_num*7)+(td2_num*8)==score){
 
-                            printCombinations(td_num,fg_num,s_num,td2_num,td1_num);
+                            printf("%d TD + 2pt, %d TD + FG, %d TD, %d FG %d Safety\n", td2_num, td1_num, td_num, fg_num, s_num);
 
                         }
                     }
