@@ -1,4 +1,12 @@
+//  EECS 348 LAB 07 PROBLEM 1
+//  Football score calculator
+//  INPUT: score
+//  OUTPUT: possible score combinations
+//  ALEXANDER TOLES      
+//  MARCH 25 2025
+
 #include <stdio.h>
+
 void printCombinations(int td,int fg,int s,int td2,int td1){
     printf("%d TD + 2pt, %d TD + FG, %d TD, %d FG %d Safety\n", td2, td1, td, fg, s);
 }
