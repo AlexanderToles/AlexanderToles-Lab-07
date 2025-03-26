@@ -7,18 +7,22 @@
 
 #include <stdio.h>
 
-void searchCombinations(int score){
-    for(int s_num = 0;s_num*2<score;s_num++){
 
-        for(int fg_num = 0;fg_num*3<score;fg_num++){
+//for each possible way to score, tests every combination of scores possible by iterating through each possible way to score
 
-            for(int td_num = 0;td_num*6<score;td_num++){
 
-                for(int td1_num = 0;td1_num*7<score;td1_num++){
+void searchCombinations(int score){ //takes in score
+    for(int s_num = 0;s_num*2<score;s_num++){ //iterate from 0 to the max number of safetys possible
 
-                    for(int td2_num = 0;td2_num*8<score;td2_num++){
+        for(int fg_num = 0;fg_num*3<score;fg_num++){ //iterate from 0 to the max number of field goals possible
 
-                        if((s_num*2)+(fg_num*3)+(td_num*6)+(td1_num*7)+(td2_num*8)==score){
+            for(int td_num = 0;td_num*6<score;td_num++){ //iterate from 0 to the max number of touch downs possible
+
+                for(int td1_num = 0;td1_num*7<score;td1_num++){ //iterate from 0 to the max number of touch downs with field goals possible
+
+                    for(int td2_num = 0;td2_num*8<score;td2_num++){ //iterate from 0 to the max number of touch downs with safety possible
+
+                        if((s_num*2)+(fg_num*3)+(td_num*6)+(td1_num*7)+(td2_num*8)==score){ //check if the combination equals the score, if so, print the score.
 
                             printf("%d TD + 2pt, %d TD + FG, %d TD, %d FG %d Safety\n", td2_num, td1_num, td_num, fg_num, s_num);
 
@@ -34,19 +38,19 @@ void searchCombinations(int score){
 
 }
 void promptUser(){
-    int score;
+    int score; //initialize score variable
     printf("\nEnter Score(Enter 0 or 1 to exit): ");
-    scanf("%d", &score);
-    if(score > 1){
+    scanf("%d", &score); //store variable
+    if(score > 1){ //score must be greater than 1
         printf("Possible score combinations to make %d\n",score);
-        searchCombinations(score);
-        promptUser();
+        searchCombinations(score); //search combinations
+        promptUser(); //prompt the user again.
     }
     else{
-        return;
+        return; //end program
     }
 }
 int main(){
-    promptUser();
+    promptUser(); //prompt user
     return 0;
 }
